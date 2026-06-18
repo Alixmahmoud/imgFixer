@@ -134,3 +134,4 @@ export async function heicToJpg(file: File): Promise<ConvertResult> {
 
   return { file: resultFile, dimensions }
 }
+

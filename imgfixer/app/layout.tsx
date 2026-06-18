@@ -15,7 +15,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-export const metadata: Metadata = homeMetadata
+export const metadata: Metadata = {
+  ...homeMetadata,
+  verification: {
+    google: "0uSPBrcbn9-HLrznjwix-pAq4H7lOZFF-hxPBZ-fQ3s",
+  },
+}
 
 export default function RootLayout({
   children,
