@@ -63,10 +63,10 @@ export default function PrivacyPage() {
         <p>
           If you have questions about this policy, reach out to us at{" "}
           <a
-            href="mailto:support@example.com"
+            href="mailto:imgfixer.support@gmail.com"
             className="font-medium text-zinc-900 underline dark:text-zinc-100"
           >
-            support@example.com
+            imgfixer.support@gmail.com
           </a>
           .
         </p>

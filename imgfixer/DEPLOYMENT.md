@@ -171,8 +171,8 @@ Run these on the live URL to confirm everything works in production:
 
 | Location | Placeholder | Action |
 |---|---|---|
-| `app/contact/page.tsx` | `support@example.com` | Replace with your real contact email |
-| `app/privacy/page.tsx` | `support@example.com` | Replace with your real contact email |
+| `app/contact/page.tsx` | `imgfixer.support@gmail.com` | ✅ Updated |
+| `app/privacy/page.tsx` | `imgfixer.support@gmail.com` | ✅ Updated |
 | `.env.example` | `https://your-domain.com` | Informational only; actual value goes in Vercel env vars |
 | `NEXT_PUBLIC_SITE_URL` fallback | `http://localhost:3000` | Overridden by Vercel env var in production |
 

@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export const metadata: Metadata = contactMetadata
 
-/* TODO: Replace support@example.com with real email before deploy. */
+/* TODO: Replace imgfixer.support@gmail.com with real email before deploy. */
 
 export default function ContactPage() {
   return (
@@ -16,10 +16,10 @@ export default function ContactPage() {
         Have a question, suggestion, or feedback? We would love to hear from
         you. Reach out to us at{" "}
         <a
-          href="mailto:support@example.com"
+          href="mailto:imgfixer.support@gmail.com"
           className="font-medium text-zinc-900 underline dark:text-zinc-100"
         >
-          support@example.com
+          imgfixer.support@gmail.com
         </a>
         .
       </p>
