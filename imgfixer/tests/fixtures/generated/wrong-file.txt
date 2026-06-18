@@ -1,0 +1,1 @@
+This file is deliberately not an image. Used to test unsupported file rejection.
