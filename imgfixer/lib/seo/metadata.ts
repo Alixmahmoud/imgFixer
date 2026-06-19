@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 
-/* Set NEXT_PUBLIC_SITE_URL in Vercel env vars so sitemap, robots, canonical, and OG URLs use the correct domain. Falls back to localhost for dev. */
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
 
 interface PageMetadata {
@@ -17,15 +16,16 @@ export function createMetadata({
   ogImage,
 }: PageMetadata): Metadata {
   const url = path ? `${SITE_URL}${path}` : SITE_URL
+  const fullTitle = title.includes("ImgFixer") ? title : `${title} | ImgFixer`
   return {
-    title: `${title} | ImgFixer`,
+    title: fullTitle,
     description,
     metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${title} | ImgFixer`,
+      title: fullTitle,
       description,
       url,
       siteName: "ImgFixer",
@@ -37,27 +37,21 @@ export function createMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ImgFixer`,
+      title: fullTitle,
       description,
       images: ogImage ? [`${SITE_URL}${ogImage}`] : undefined,
     },
   }
 }
 
-/*
- * Alias for static pages (privacy, terms, contact, etc.).
- */
 export const createPageMetadata = createMetadata
 
-/*
- * Alias for tool pages (compress, resize, convert, etc.).
- */
 export const createToolMetadata = createMetadata
 
 export const homeMetadata: Metadata = createMetadata({
-  title: "Free Online Image Tools",
+  title: "ImgFixer — Free Online Image Tools",
   description:
-    "Compress, resize, and convert images online for free. No uploads required — everything runs in your browser.",
+    "Free browser-based image tools to compress, resize, convert images, create PDFs, and remove metadata. No installation required.",
   path: "/",
 })
 
@@ -70,7 +64,7 @@ export const toolsMetadata: Metadata = createMetadata({
 
 export function compressMetadata(path?: string): Metadata {
   return createMetadata({
-    title: "Compress Image",
+    title: "Compress Image Online",
     description:
       "Compress your images online for free. Reduce file size without losing quality. Supports JPG, PNG, and WebP.",
     path: path || "/compress-image",
@@ -86,35 +80,35 @@ export function compressTargetMetadata(size: string, path?: string): Metadata {
 }
 
 export const resizeMetadata: Metadata = createMetadata({
-  title: "Resize Image",
+  title: "Resize Image Online",
   description:
     "Resize your images online for free. Change width and height instantly with fit, exact, or crop modes. Preserve aspect ratio or set custom dimensions.",
   path: "/resize-image",
 })
 
 export const heicToJpgMetadata: Metadata = createMetadata({
-  title: "HEIC to JPG",
+  title: "HEIC to JPG Converter",
   description:
     "Convert HEIC and HEIF images to JPG format online for free. Works with iPhone photos directly in your browser.",
   path: "/heic-to-jpg",
 })
 
 export const webpToJpgMetadata: Metadata = createMetadata({
-  title: "WebP to JPG",
+  title: "WebP to JPG Converter",
   description:
     "Convert WebP images to JPG format online for free. Download your images in the widely supported JPEG format.",
   path: "/webp-to-jpg",
 })
 
 export const pngToJpgMetadata: Metadata = createMetadata({
-  title: "PNG to JPG",
+  title: "PNG to JPG Converter",
   description:
     "Convert PNG images to JPG format online for free. Reduce file size while maintaining quality. Transparent areas become white.",
   path: "/png-to-jpg",
 })
 
 export const jpgToPdfMetadata: Metadata = createMetadata({
-  title: "JPG to PDF",
+  title: "JPG to PDF Converter",
   description:
     "Convert JPG and PNG images to PDF online for free. Combine multiple images into one PDF. Adjust page size, margins, and orientation.",
   path: "/jpg-to-pdf",

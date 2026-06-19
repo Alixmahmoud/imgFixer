@@ -77,10 +77,10 @@ export default function HomePage() {
       {/* Hero */}
       <section className="mb-20 space-y-6 text-center">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-          Free Online Image Tools
+          ImgFixer — Free Online Image Tools
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          Compress, resize, convert images, create PDFs, and remove metadata — all in your browser. Nothing is uploaded to any server.
+          Free browser-based image tools to compress, resize, convert images, create PDFs, and remove metadata. No installation required.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link
