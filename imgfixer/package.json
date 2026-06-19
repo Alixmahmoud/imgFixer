@@ -10,6 +10,7 @@
     "generate:test-assets": "node scripts/generate-test-assets.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "browser-image-compression": "^2.0.2",
     "clsx": "^2.1.1",
     "heic2any": "^0.0.4",
