@@ -285,7 +285,7 @@ export default function ResizeImageTool() {
                     const v = e.target.value
                     setWidthWithAspect(v === "" ? 0 : Number(v))
                   }}
-                  className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="w-full rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 text-base font-medium text-[#1d1f23] shadow-sm outline-none transition-all placeholder:text-[#8a8f98] focus:border-[#24389c] focus:ring-2 focus:ring-[#24389c]/15"
                 />
               </div>
               <div className="space-y-1.5">
@@ -301,7 +301,7 @@ export default function ResizeImageTool() {
                     const v = e.target.value
                     setHeightWithAspect(v === "" ? 0 : Number(v))
                   }}
-                  className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="w-full rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 text-base font-medium text-[#1d1f23] shadow-sm outline-none transition-all placeholder:text-[#8a8f98] focus:border-[#24389c] focus:ring-2 focus:ring-[#24389c]/15"
                 />
               </div>
             </div>
@@ -323,7 +323,7 @@ export default function ResizeImageTool() {
           </div>
 
           {/* Output format */}
-          <div className="space-y-1.5">
+          <div className="relative space-y-1.5">
             <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
               Output format
             </label>
@@ -334,7 +334,7 @@ export default function ResizeImageTool() {
                   e.target.value as ResizeOptions["outputFormat"]
                 )
               }
-              className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                  className="w-full cursor-pointer appearance-none rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 pr-10 text-base font-medium text-[#1d1f23] shadow-sm outline-none transition-all focus:border-[#24389c] focus:ring-2 focus:ring-[#24389c]/15"
             >
               {OUTPUT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -342,6 +342,11 @@ export default function ResizeImageTool() {
                 </option>
               ))}
             </select>
+            <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#49515d]">
+              <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
 
           {formatChangedToJpg && (

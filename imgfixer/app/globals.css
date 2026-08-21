@@ -1,22 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9f9f8;
+  --foreground: #1a1c1c;
+  --surface: #f9f9f8;
+  --surface-dim: #dadad9;
+  --surface-bright: #f9f9f8;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f3f4f3;
+  --surface-container: #eeeeed;
+  --surface-container-high: #e8e8e7;
+  --surface-container-highest: #e2e2e2;
+  --on-surface: #1a1c1c;
+  --on-surface-variant: #454652;
+  --outline: #757684;
+  --outline-variant: #c5c5d4;
+  --primary: #24389c;
+  --on-primary: #ffffff;
+  --primary-container: #3f51b5;
+  --on-primary-container: #cacfff;
+  --secondary: #5f5e5e;
+  --secondary-container: #e2dfde;
+  --tertiary: #6c3400;
+  --shadow: rgba(36, 56, 156, 0.12);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-manrope);
 }
 
 html {
@@ -24,36 +40,82 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(63, 81, 181, 0.07), transparent 28%),
+    var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-title {
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+label,
+input,
+select,
+button,
+option,
+textarea {
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
 }
 
 ::selection {
-  background-color: #18181b;
-  color: #fafafa;
+  background-color: #24389c;
+  color: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  ::selection {
-    background-color: #fafafa;
-    color: #18181b;
-  }
-}
-
-/* Base focus ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #18181b;
+  outline: 2px solid #24389c;
   outline-offset: 2px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :focus-visible {
-    outline-color: #fafafa;
-  }
-}
-
-/* Remove default focus ring for mouse users */
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+.bg-white { background-color: var(--surface-container-lowest) !important; }
+.bg-zinc-50 { background-color: var(--surface-container-low) !important; }
+.bg-zinc-100 { background-color: var(--surface-container) !important; }
+.bg-zinc-900 { background-color: var(--primary) !important; }
+.bg-zinc-800 { background-color: var(--primary-container) !important; }
+.bg-zinc-950 { background-color: #1a1c1c !important; }
+
+.text-zinc-900,
+.text-zinc-950 { color: var(--on-surface) !important; }
+.text-zinc-700,
+.text-zinc-800 { color: var(--on-surface-variant) !important; }
+.text-zinc-600 { color: var(--on-surface-variant) !important; }
+.text-zinc-500 { color: var(--outline) !important; }
+.text-zinc-400 { color: var(--outline) !important; }
+.text-zinc-300 { color: rgba(26, 28, 28, 0.68) !important; }
+.text-zinc-100 { color: var(--on-primary) !important; }
+.text-zinc-200 { color: rgba(255, 255, 255, 0.82) !important; }
+
+.border-zinc-200 { border-color: var(--outline-variant) !important; }
+.border-zinc-300 { border-color: var(--outline) !important; }
+.border-zinc-800 { border-color: rgba(117, 118, 132, 0.55) !important; }
+.border-zinc-700 { border-color: rgba(117, 118, 132, 0.55) !important; }
+
+.shadow-sm,
+.shadow {
+  box-shadow: 0 12px 30px rgba(36, 56, 156, 0.08) !important;
+}
+
+.rounded-lg { border-radius: 20px !important; }
+.rounded-md { border-radius: 14px !important; }
+.rounded-full { border-radius: 999px !important; }
+
+button,
+input,
+select,
+textarea {
+  transition: all 180ms ease;
 }

@@ -4,23 +4,27 @@ import Link from "next/link"
 
 export const metadata: Metadata = contactMetadata
 
-/* TODO: Replace imgfixer.support@gmail.com with real email before deploy. */
-
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-4 py-16">
       <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
         Contact Us
       </h1>
+      <div className="rounded-lg border border-[#cfd3e4] bg-[#edf0ff] p-4 text-sm text-[#24356f]">
+        ImgFixer is currently in beta and available for testing. Your feedback
+        helps us improve the tools before the full release.
+      </div>
       <p className="text-zinc-600 dark:text-zinc-400">
-        Have a question, suggestion, or feedback? We would love to hear from
-        you. Reach out to us at{" "}
-        <a
-          href="mailto:imgfixer.support@gmail.com"
-          className="font-medium text-zinc-900 underline dark:text-zinc-100"
-        >
-          imgfixer.support@gmail.com
-        </a>
+        Have a question, suggestion, or feedback? i would love to hear from
+        you. Reach out at{" "}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=alymahmoud107@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-zinc-900 underline dark:text-zinc-100"
+          >
+            alymahmoud107@gmail.com
+          </a>
         .
       </p>
 

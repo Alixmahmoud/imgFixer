@@ -46,34 +46,38 @@ export default function UploadBox({
     if (file) handleFile(file)
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault()
-      inputRef.current?.click()
-    }
-  }
-
   return (
     <div
       onClick={() => inputRef.current?.click()}
-      onKeyDown={handleKeyDown}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      role="button"
-      tabIndex={0}
+      role="group"
       aria-label="Upload image"
-      className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 text-center transition-colors ${
+      className={`flex cursor-pointer flex-col items-center justify-center rounded-[24px] border-2 border-dashed p-12 text-center transition-all ${
         isDragOver
-          ? "border-zinc-900 bg-zinc-100 dark:border-zinc-100 dark:bg-zinc-800"
-          : "border-zinc-300 bg-zinc-50 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-500"
+          ? "border-[var(--primary)] bg-[rgba(36,56,156,0.06)] shadow-sm"
+          : "border-[var(--outline)] bg-[var(--surface-container-low)] hover:border-[var(--primary)] hover:bg-[rgba(36,56,156,0.04)]"
       }`}
     >
-      <Upload className="mb-3 h-8 w-8 text-zinc-400" />
-      <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[rgba(36,56,156,0.08)] text-[var(--primary)]">
+        <Upload className="h-6 w-6" />
+      </div>
+      <p className="text-sm font-medium text-[var(--on-surface)]">
         Drop your image here or click to browse
       </p>
-      <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation()
+          inputRef.current?.click()
+        }}
+        disabled={disabled}
+        className="mt-4 inline-flex cursor-pointer items-center rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--primary-container)] disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        Choose file
+      </button>
+      <p className="mt-2 text-xs text-[var(--on-surface-variant)]">
         Supports {supportedFormats}
       </p>
       <input

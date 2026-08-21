@@ -96,9 +96,11 @@ export default function CompressImageTool(props: Props) {
           URL.revokeObjectURL(compressedUrlRef.current)
           setCompressedUrl(URL.createObjectURL(result.file))
         } else {
-          const result = await compressImage(originalFile, quality / 100)
+          const nextQuality = quality / 100
+          const result = await compressImage(originalFile, nextQuality)
           if (cancelled) return
           setCompressedFile(result)
+          setFinalQuality(nextQuality)
           URL.revokeObjectURL(compressedUrlRef.current)
           setCompressedUrl(URL.createObjectURL(result))
         }
@@ -232,15 +234,17 @@ export default function CompressImageTool(props: Props) {
               min="10"
               max="100"
               value={quality}
-               onChange={(e) => {
-                 setQuality(Number(e.target.value))
-                 if (!isTarget) {
-                   setError(null)
-                   setIsCompressing(true)
-                 }
-               }}
+              onChange={(e) => {
+                const nextQuality = Number(e.target.value)
+                setQuality(nextQuality)
+                setFinalQuality(nextQuality / 100)
+                setCompressedFile(null)
+                setCompressedUrl("")
+                setError(null)
+                setIsCompressing(true)
+              }}
               aria-label="Compression quality"
-              className="w-full cursor-pointer accent-zinc-900 dark:accent-zinc-100"
+              className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#dfe4f3] accent-[#24389c]"
             />
           )}
 

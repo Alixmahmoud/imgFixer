@@ -267,6 +267,12 @@ export default function JpgToPdfTool() {
     a.click()
   }, [pdfFile, pdfUrl])
 
+  const handleBackToSettings = useCallback(() => {
+    URL.revokeObjectURL(pdfUrlRef.current)
+    setPdfFile(null)
+    setPdfUrl("")
+  }, [])
+
   return (
     <div className="space-y-6">
       {error && (
@@ -304,6 +310,16 @@ export default function JpgToPdfTool() {
           <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
             Drop your images here or click to browse
           </p>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              fileInputRef.current?.click()
+            }}
+            className="mt-4 inline-flex cursor-pointer items-center rounded-full bg-[#24389c] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#3f51b5]"
+          >
+            Choose images
+          </button>
           <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
             Supports JPG, PNG &mdash; Up to {MAX_IMAGES} images &mdash; Max
             15MB each
@@ -333,9 +349,9 @@ export default function JpgToPdfTool() {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="text-xs font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+              className="inline-flex cursor-pointer items-center rounded-full border border-[#cfd3e4] bg-[#edf0ff] px-3 py-1.5 text-xs font-semibold text-[#24389c] transition-colors hover:border-[#24389c] hover:bg-white"
             >
-              + Add more
+              Add more images
             </button>
             <input
               ref={fileInputRef}
@@ -423,72 +439,84 @@ export default function JpgToPdfTool() {
               <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 Page size
               </label>
-              <select
-                value={pageSize}
-                onChange={(e) =>
-                  setPageSize(e.target.value as PdfPageSize)
-                }
-                className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
-              >
-                {PAGE_SIZES.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={pageSize}
+                  onChange={(e) =>
+                    setPageSize(e.target.value as PdfPageSize)
+                  }
+                  className="w-full cursor-pointer appearance-none rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 pr-10 text-base font-medium text-[#1d1f23] shadow-sm transition-all focus:border-[#24389c] focus:outline-none focus:ring-2 focus:ring-[#24389c]/15"
+                >
+                  {PAGE_SIZES.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#49515d]" />
+              </div>
             </div>
 
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 Orientation
               </label>
-              <select
-                value={orientation}
-                onChange={(e) =>
-                  setOrientation(e.target.value as PdfOrientation)
-                }
-                className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
-              >
-                {ORIENTATIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={orientation}
+                  onChange={(e) =>
+                    setOrientation(e.target.value as PdfOrientation)
+                  }
+                  className="w-full cursor-pointer appearance-none rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 pr-10 text-base font-medium text-[#1d1f23] shadow-sm transition-all focus:border-[#24389c] focus:outline-none focus:ring-2 focus:ring-[#24389c]/15"
+                >
+                  {ORIENTATIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#49515d]" />
+              </div>
             </div>
 
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 Margin
               </label>
-              <select
-                value={margin}
-                onChange={(e) => setMargin(e.target.value as PdfMargin)}
-                className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
-              >
-                {MARGINS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={margin}
+                  onChange={(e) => setMargin(e.target.value as PdfMargin)}
+                  className="w-full cursor-pointer appearance-none rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 pr-10 text-base font-medium text-[#1d1f23] shadow-sm transition-all focus:border-[#24389c] focus:outline-none focus:ring-2 focus:ring-[#24389c]/15"
+                >
+                  {MARGINS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#49515d]" />
+              </div>
             </div>
 
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 Image fit
               </label>
-              <select
-                value={fitMode}
-                onChange={(e) => setFitMode(e.target.value as PdfFitMode)}
-                className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
-              >
-                {FIT_MODES.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={fitMode}
+                  onChange={(e) => setFitMode(e.target.value as PdfFitMode)}
+                  className="w-full cursor-pointer appearance-none rounded-full border border-[#d7d9dd] bg-[#f4f4f3] px-4 py-3 pr-10 text-base font-medium text-[#1d1f23] shadow-sm transition-all focus:border-[#24389c] focus:outline-none focus:ring-2 focus:ring-[#24389c]/15"
+                >
+                  {FIT_MODES.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#49515d]" />
+              </div>
             </div>
           </div>
 
@@ -552,6 +580,13 @@ export default function JpgToPdfTool() {
             >
               <Download className="h-4 w-4" />
               Download PDF
+            </button>
+            <button
+              type="button"
+              onClick={handleBackToSettings}
+              className="w-full cursor-pointer rounded-lg border border-zinc-200 px-4 py-2.5 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900"
+            >
+              Back to settings
             </button>
           </div>
         </div>

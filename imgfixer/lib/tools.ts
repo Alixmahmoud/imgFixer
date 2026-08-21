@@ -148,10 +148,10 @@ export const tools: ToolDefinition[] = [
 ]
 
 export const categories: { key: ToolCategory; label: string }[] = [
+  { key: "pdf", label: "PDF" },
   { key: "compress", label: "Compress" },
   { key: "resize", label: "Resize" },
   { key: "convert", label: "Convert" },
-  { key: "pdf", label: "PDF" },
   { key: "privacy", label: "Privacy" },
 ]
 

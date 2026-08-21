@@ -4,12 +4,20 @@ export async function compressImage(
   file: File,
   quality: number
 ): Promise<File> {
+  const originalSizeMB = file.size / (1024 * 1024)
+  const targetSizeMB = Math.max(
+    0.05,
+    Math.min(20, originalSizeMB * Math.max(0.3, quality) * 0.9)
+  )
+
   const options = {
-    maxSizeMB: 100,
+    maxSizeMB: targetSizeMB,
     maxWidthOrHeight: 10000,
     useWebWorker: true,
     initialQuality: quality,
+    fileType: file.type === "image/png" ? "image/jpeg" : undefined,
   }
+
   return imageCompression(file, options)
 }
 

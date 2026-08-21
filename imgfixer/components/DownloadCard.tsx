@@ -19,13 +19,13 @@ export default function DownloadCard({
   const isLarger = saved < 0
 
   return (
-    <div className="space-y-3 rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+    <div className="space-y-3 rounded-[24px] border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] p-4 shadow-sm">
       <div className="flex items-center justify-between gap-4">
         <div className="min-w-0 space-y-1">
-          <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          <p className="truncate text-sm font-medium text-[var(--on-surface)]">
             {file.name}
           </p>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-[var(--on-surface-variant)]">
             {formatSize(file.size)}
             {isLarger
               ? ` — ${formatSize(Math.abs(saved))} larger than original`
@@ -35,7 +35,7 @@ export default function DownloadCard({
         <button
           type="button"
           onClick={onDownload}
-          className="shrink-0 rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+          className="shrink-0 rounded-full bg-[var(--primary)] px-5 py-2.5 text-sm font-semibold text-[var(--on-primary)] shadow-sm transition-transform hover:-translate-y-0.5"
         >
           Download
         </button>
