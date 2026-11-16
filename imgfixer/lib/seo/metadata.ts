@@ -114,6 +114,13 @@ export const jpgToPdfMetadata: Metadata = createMetadata({
   path: "/jpg-to-pdf",
 })
 
+export const pdfToPngMetadata: Metadata = createMetadata({
+  title: "PDF to PNG Converter",
+  description:
+    "Convert PDF pages to high-quality PNG images online for free. Choose the resolution, keep transparency, and download every page or a ZIP. Runs in your browser.",
+  path: "/pdf-to-png",
+})
+
 export const removeExifMetadata: Metadata = createMetadata({
   title: "Remove EXIF Metadata",
   description:

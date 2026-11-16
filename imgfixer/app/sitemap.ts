@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/webp-to-jpg",
     "/png-to-jpg",
     "/jpg-to-pdf",
+    "/pdf-to-png",
     "/remove-exif",
   ]
 
